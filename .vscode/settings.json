@@ -14,5 +14,10 @@
         "PATH": "${workspaceFolder}/../.venv/Scripts;${env:PATH}",
         // Allow imports from the project root without installing the package
         "PYTHONPATH": "${workspaceFolder}"
+    },
+    // Hide Python bytecode artifacts from the file explorer
+    "files.exclude": {
+        "**/__pycache__": true,
+        "**/*.pyc": true
     }
 }
