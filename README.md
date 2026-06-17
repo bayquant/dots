@@ -23,6 +23,14 @@ Project-level instructions that Claude reads automatically when working inside t
 
 Project-level files take precedence over global ones. Both can coexist.
 
+### `.claude/agents/software-engineer.md`
+
+A custom subagent definition. Claude Code loads any `.md` file under `.claude/agents/` as a subagent, invocable via the `Agent` tool. `software-engineer` instructs the agent to treat architecture as its main guiding principle — identify the existing architectural pattern before changing code, reinforce module boundaries and separation of concerns rather than fight them — alongside professional engineering rigor: minimum necessary code, no speculative abstractions, verify against success criteria before finishing, and flag risky operations rather than run them silently.
+
+### `.claude/agents/quantitative-researcher.md`
+
+A custom subagent for statistical analysis, backtesting, and model development. `quantitative-researcher` treats bias control as its main guiding principle — actively checking for lookahead bias, survivorship bias, and data leakage before trusting any result — alongside in-sample/out-of-sample separation, disclosing search across parameters, quantifying uncertainty, reproducible documentation, and preferring the simplest model that fits the data.
+
 ## .vscode/settings.json
 
 VS Code workspace settings for Python development. Targets a virtual environment named `.venv` located in the parent directory of the workspace (`../.venv`).

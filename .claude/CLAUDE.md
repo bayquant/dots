@@ -15,7 +15,13 @@ Never use plain `pip` or `python -m pip` directly.
 
 ## Code Style
 
-- All .py files (even if sections are empty) should contain the following blocks:
+Follow [PEP 8](https://peps.python.org/pep-0008/) throughout. Key rules:
+
+- Do not use spaces to vertically align tokens on consecutive lines — prohibited by [PEP 8 § Whitespace in Expressions and Statements](https://peps.python.org/pep-0008/#whitespace-in-expressions-and-statements).
+- Use `#` for all comments, including multi-line blocks. Reserve `"""` for docstrings on modules, classes, and functions only ([PEP 257](https://peps.python.org/pep-0257/)).
+- Use `X | None` instead of `Optional[X]` for nullable types ([PEP 604](https://peps.python.org/pep-0604/)). `Optional` from `typing` is not needed in Python 3.10+.
+
+All `.py` files (even if sections are empty) should contain the following blocks:
 
 #-----------------------------------------------------------------------------
 # Imports
@@ -37,7 +43,7 @@ The public surface — classes and functions documented, and exported via __all_
 #-----------------------------------------------------------------------------
 Implementation details prefixed with _. Not intended for external use.
 
-- Use `#` for all comments, including multi-line blocks (PEP 8). Reserve `"""` for docstrings on modules, classes, and functions (PEP 257).
+`if __name__ == "__main__":` goes after the Private API section, at the very end of the file.
 
 ### Naming conventions
 
