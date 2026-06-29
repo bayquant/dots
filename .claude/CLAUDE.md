@@ -48,3 +48,7 @@ Implementation details prefixed with _. Not intended for external use.
 ### Naming conventions
 
 - Use `args` and `kwargs` for positional and keyword argument collections. Use `arg` and `kwarg` when iterating over them.
+
+## Git Commits
+
+When committing (requested by user), commit messages must use no capital letters whatsoever — the only exception is variable names or identifiers that are inherently capitalized (e.g., `MyClass`, `MY_CONSTANT`).
