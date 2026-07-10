@@ -23,24 +23,24 @@ Follow [PEP 8](https://peps.python.org/pep-0008/) throughout. Key rules:
 
 All `.py` files (even if sections are empty) should contain the following blocks:
 
-#-----------------------------------------------------------------------------
+# ----------------------------------------------------------------------------
 # Imports
-#-----------------------------------------------------------------------------
+# ----------------------------------------------------------------------------
 Separate imports with comments # Standard library imports and # Other imports. Should import one item per line. Sort by absolute and relative style and then alphabetically.
 
-#-----------------------------------------------------------------------------
+# ----------------------------------------------------------------------------
 # Globals and constants
-#-----------------------------------------------------------------------------
+# ----------------------------------------------------------------------------
 Module-level __all__ and other constants. Only add constants that are used substantially across the code. Constants with a preceding _ should be in this section.
 
-#-----------------------------------------------------------------------------
+# ----------------------------------------------------------------------------
 # General API
-#-----------------------------------------------------------------------------
+# ----------------------------------------------------------------------------
 The public surface — classes and functions documented, and exported via __all__.              
 
-#-----------------------------------------------------------------------------
+# ----------------------------------------------------------------------------
 # Private API
-#-----------------------------------------------------------------------------
+# ----------------------------------------------------------------------------
 Implementation details prefixed with _. Not intended for external use.
 
 `if __name__ == "__main__":` goes after the Private API section, at the very end of the file.
