@@ -51,7 +51,7 @@ Implementation details prefixed with _. Not intended for external use.
 
 ## Notebooks
 
-The first cell at the top of every notebook must always include these two lines:
+Every notebook must include a title in a top-level markdown cell. The first code cell (under the title) must always include these two lines:
 
 ```python
 %load_ext autoreload
