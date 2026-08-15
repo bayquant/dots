@@ -106,16 +106,18 @@ Inside a DataFrame, let the library store its native vectorized type (`pd.Timest
 
 ## Notebooks
 
-Every notebook must include a title in a top-level markdown cell. The title should be in ALL-CAPS.
+Every notebook must include a title in a top-level markdown cell. The title should be in ALL-CAPS. A short description may follow the title in the same markdown cell.
 
-The first code cell (under the title) must always include:
+The notebook must then open with these two cells, in order, each separate:
 
-```python
-%load_ext autoreload
-%autoreload 2
-```
+1. A code cell containing only:
 
-After these directives, add imports and configuration in the same cell, following the [import ordering rules](#file-structure).
+   ```python
+   %load_ext autoreload
+   %autoreload 2
+   ```
+
+2. A code cell with imports and configuration, following the [import ordering rules](#file-structure). Nothing else goes in this cell.
 
 ## Git Commits
 
