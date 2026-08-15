@@ -5,6 +5,10 @@
 3. Touch only what you must. Clean up only your own mess.
 4. Define success criteria. Loop until verified.
 
+## Writing Style
+
+@.claude/writing-style.md
+
 ## Python Environment
 
 Always use `uv` with the pip interface for Python operations. Run all `pip` commands as `uv pip` (e.g., `uv pip install`).
@@ -13,7 +17,9 @@ Before running any Python or pip command, check if a `.venv` exists in the curre
 
 Never use plain `pip` or `python -m pip` directly.
 
-## Code Style
+## Code Standards
+
+### PEP 8
 
 Follow [PEP 8](https://peps.python.org/pep-0008/) throughout. Key rules:
 
@@ -21,39 +27,67 @@ Follow [PEP 8](https://peps.python.org/pep-0008/) throughout. Key rules:
 - Use `#` for all comments, including multi-line blocks. Reserve `"""` for docstrings on modules, classes, and functions only ([PEP 257](https://peps.python.org/pep-0257/)).
 - Use `X | None` instead of `Optional[X]` for nullable types ([PEP 604](https://peps.python.org/pep-0604/)). `Optional` from `typing` is not needed in Python 3.10+.
 
+### File structure
+
 All Python files (`.py` files and `.ipynb` notebooks) should organize imports as follows:
 
+```python
 # ----------------------------------------------------------------------------
 # Imports
 # ----------------------------------------------------------------------------
-Separate imports with comments marking each section: `# Standard library imports`, `# Third-party imports`, `# First-party imports`, `# Local imports`. Ruff's isort integration automatically organizes and sorts alphabetically within each section. Add the section comments; isort will preserve them and maintain blank lines between sections.
+```
+Separate imports with comments marking each section, in this order:
 
-**Import style by section:**
-- **First-party imports**: Use absolute imports for other packages in the project (e.g., `from spread_sniper import ...`, `from mail.service import ...`).
-- **Local imports**: Use relative imports for modules within the same package (e.g., `from .module import ...`, `from ..sibling import ...`).
+1. `# Future imports`
+2. `# Standard library imports`
+3. `# Third-party imports`
+4. `# First-party imports`
+5. `# Local imports`
 
-For `.py` files, use the section blocks below. For notebooks, include imports in the first code cell after the autoreload directives.
+Add the section comments; maintain blank lines between sections, and within each section:
 
+- put all import x lines before any from x import y lines
+- alphabetize each of those two groups by module name
+- alphabetize the names listed after import in each from line
+- one import per line — never combine multiple modules or names on a single `import` or `from` statement
+
+Import style by section:
+
+| Section | Style | Example |
+|---|---|---|
+| First-party imports | Absolute imports for other packages in the project | `from spread_sniper import ...`, `from mail.service import ...` |
+| Local imports | Relative imports for modules within the same package | `from .module import ...`, `from ..sibling import ...` |
+
+For `.py` files only, use the section blocks below.
+
+```python
 # ----------------------------------------------------------------------------
 # Globals and constants (for .py files)
 # ----------------------------------------------------------------------------
-Module-level __all__ and other constants. Only add constants that are used substantially across the code. Constants with a preceding _ should be in this section.
+```
+Module-level `__all__` and other constants. Only pull a value out into a module-level constant if it's reused substantially across the code — a value used once should stay inline, not be promoted here. Constants with a preceding `_` should be in this section.
 
+```python
 # ----------------------------------------------------------------------------
 # General API (for .py files)
 # ----------------------------------------------------------------------------
+```
 The public surface — classes and functions documented, and exported via __all__.              
 
+```python
 # ----------------------------------------------------------------------------
 # Private API (for .py files)
 # ----------------------------------------------------------------------------
-Implementation details prefixed with _. Not intended for external use.
+```
+Private members (leading `_`), excluded from `__all__`.
 
 `if __name__ == "__main__":` goes after the Private API section, at the very end of the file.
 
 ### Naming conventions
 
-- Use `args` and `kwargs` for positional and keyword argument collections. Use `arg` and `kwarg` when iterating over them.
+- Use `args`/`kwargs` for collections, `arg`/`kwarg` when iterating.
+- Use `start`/`end` for range bounds (dates, indices, versions, …).
+- Suffix a variable with `_dir` if it holds a directory (e.g. `dest_dir = "/data/output"`), or `_path` if it holds a specific file (e.g. `config_path = "/data/output/config.yaml"`). Don't use bare `dir` — it shadows the builtin.
 
 ### Dates and times
 
@@ -72,7 +106,7 @@ The first code cell (under the title) must always include:
 %autoreload 2
 ```
 
-After these directives, add imports and configuration in the same cell, following the import ordering rules: separate with comments `# Standard library imports` and `# Other imports`, one import per line, sorted by absolute and relative style then alphabetically.
+After these directives, add imports and configuration in the same cell, following the [import ordering rules](#file-structure).
 
 ## Git Commits
 
