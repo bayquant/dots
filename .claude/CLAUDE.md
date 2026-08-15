@@ -81,6 +81,15 @@ The public surface — classes and functions documented, and exported via __all_
 ```
 Private members (leading `_`), excluded from `__all__`.
 
+Extract a helper function only when at least one of these is true:
+
+- **Reused** — called from more than one place.
+- **Non-trivial complexity** — enough steps or non-obvious logic that inlining would bury the "why" inside a longer function.
+- **Independent testability** — you need to unit-test the logic in isolation from its caller (pure calculations, edge-case-heavy parsing).
+- **Meaningful name adds clarity** — the function name explains intent better than the code itself would inline, at a glance.
+
+Otherwise, keep it inline.
+
 `if __name__ == "__main__":` goes after the Private API section, at the very end of the file.
 
 ### Naming conventions
