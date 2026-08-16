@@ -25,6 +25,7 @@ Follow [PEP 8](https://peps.python.org/pep-0008/) throughout. Key rules:
 
 - Do not use spaces to vertically align tokens on consecutive lines — prohibited by [PEP 8 § Whitespace in Expressions and Statements](https://peps.python.org/pep-0008/#whitespace-in-expressions-and-statements).
 - Use `#` for all comments, including multi-line blocks. Reserve `"""` for docstrings on modules, classes, and functions only ([PEP 257](https://peps.python.org/pep-0257/)).
+- Inline (same-line) comments must be separated from the code by at least two spaces, and the `#` must be followed by one space ([PEP 8 § Inline Comments](https://peps.python.org/pep-0008/#inline-comments)).
 - Use `X | None` instead of `Optional[X]` for nullable types ([PEP 604](https://peps.python.org/pep-0604/)). `Optional` from `typing` is not needed in Python 3.10+.
 
 ### File structure
