@@ -7,7 +7,7 @@
 
 ## Writing Style
 
-@.claude/writing-style.md
+@context/writing-style.md
 
 ## Python Environment
 
