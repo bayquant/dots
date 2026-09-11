@@ -1,6 +1,6 @@
 ---
 name: scope-folders
-description: Run a given instruction scoped to a user-picked subset of subfolders in the current folder — lists the subfolders, lets the user multi-select which ones the instruction applies to, then executes it against only those.
+description: Run a given instruction scoped to a user-picked subset of subfolders in the current folder: lists the subfolders, lets the user multi-select which ones the instruction applies to, then executes it against only those.
 ---
 
 # Scope Folders
@@ -18,7 +18,7 @@ scope from the prompt alone.
    before doing anything else.
 
 2. **List candidate folders.** From the current folder (the directory the
-   session was opened in — use `pwd`, don't assume the cwd of this skill
+   session was opened in: use `pwd`, don't assume the cwd of this skill
    file), run:
 
    ```
@@ -29,7 +29,7 @@ scope from the prompt alone.
    and ask whether to just run the instruction unscoped.
 
 3. **Ask the user to select.** `AskUserQuestion` allows at most 4 options
-   per question and at most 4 questions per call — plan around that
+   per question and at most 4 questions per call: plan around that
    instead of passing every folder as one question's options.
 
    - **4 or fewer folders:** call `AskUserQuestion` once with
@@ -45,7 +45,7 @@ scope from the prompt alone.
      Otherwise, split the folder list into chunks of up to 4 and ask one
      `multiSelect: true` question per chunk (label = folder name), e.g.
      "Which of these should this instruction apply to? (batch 1 of 3)".
-     Up to 4 such questions fit in a single `AskUserQuestion` call — batch
+     Up to 4 such questions fit in a single `AskUserQuestion` call: batch
      that many chunks together per call. If there are more chunks than
      that (more than 16 folders), issue additional `AskUserQuestion` calls
      for the remaining chunks. Union the selections across every batch
@@ -55,9 +55,9 @@ scope from the prompt alone.
    in scope: read and edit files inside them freely, but don't read or
    edit files outside them (including other subfolders and files sitting
    directly in the current folder) unless completing the instruction is
-   impossible without doing so — in that case, stop and tell the user
+   impossible without doing so; in that case, stop and tell the user
    what's blocking it rather than silently expanding scope.
 
-5. This is a one-shot scoping for the current instruction only — nothing
+5. This is a one-shot scoping for the current instruction only: nothing
    is written to disk about the selection, and it does not affect scope
    for any other prompt in the conversation.

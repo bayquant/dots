@@ -23,7 +23,7 @@ Never use plain `pip` or `python -m pip` directly.
 
 Follow [PEP 8](https://peps.python.org/pep-0008/) throughout. Key rules:
 
-- Do not use spaces to vertically align tokens on consecutive lines — prohibited by [PEP 8 § Whitespace in Expressions and Statements](https://peps.python.org/pep-0008/#whitespace-in-expressions-and-statements).
+- Do not use spaces to vertically align tokens on consecutive lines: prohibited by [PEP 8 § Whitespace in Expressions and Statements](https://peps.python.org/pep-0008/#whitespace-in-expressions-and-statements).
 - Use `#` for all comments, including multi-line blocks. Reserve `"""` for docstrings on modules, classes, and functions only ([PEP 257](https://peps.python.org/pep-0257/)).
 - Inline (same-line) comments must be separated from the code by at least two spaces, and the `#` must be followed by one space ([PEP 8 § Inline Comments](https://peps.python.org/pep-0008/#inline-comments)).
 - Use `X | None` instead of `Optional[X]` for nullable types ([PEP 604](https://peps.python.org/pep-0604/)). `Optional` from `typing` is not needed in Python 3.10+.
@@ -50,7 +50,7 @@ Add the section comments; maintain blank lines between sections, and within each
 - put all import x lines before any from x import y lines
 - alphabetize each of those two groups by module name
 - alphabetize the names listed after import in each from line
-- one import per line — never combine multiple modules or names on a single `import` or `from` statement
+- one import per line: never combine multiple modules or names on a single `import` or `from` statement
 
 Import style by section:
 
@@ -66,14 +66,14 @@ For `.py` files only, use the section blocks below.
 # Globals and constants (for .py files)
 # ----------------------------------------------------------------------------
 ```
-Module-level `__all__` and other constants. Only pull a value out into a module-level constant if it's reused substantially across the code — a value used once should stay inline, not be promoted here. Constants with a preceding `_` should be in this section.
+Module-level `__all__` and other constants. Only pull a value out into a module-level constant if it's reused substantially across the code; a value used once should stay inline, not be promoted here. Constants with a preceding `_` should be in this section.
 
 ```python
 # ----------------------------------------------------------------------------
 # General API (for .py files)
 # ----------------------------------------------------------------------------
 ```
-The public surface — classes and functions documented, and exported via __all__.              
+The public surface: classes and functions documented, and exported via __all__.              
 
 ```python
 # ----------------------------------------------------------------------------
@@ -84,10 +84,10 @@ Private members (leading `_`), excluded from `__all__`.
 
 Extract a helper function only when at least one of these is true:
 
-- **Reused** — called from more than one place.
-- **Non-trivial complexity** — enough steps or non-obvious logic that inlining would bury the "why" inside a longer function.
-- **Independent testability** — you need to unit-test the logic in isolation from its caller (pure calculations, edge-case-heavy parsing).
-- **Meaningful name adds clarity** — the function name explains intent better than the code itself would inline, at a glance.
+- **Reused**: called from more than one place.
+- **Non-trivial complexity**: enough steps or non-obvious logic that inlining would bury the "why" inside a longer function.
+- **Independent testability**: you need to unit-test the logic in isolation from its caller (pure calculations, edge-case-heavy parsing).
+- **Meaningful name adds clarity**: the function name explains intent better than the code itself would inline, at a glance.
 
 Otherwise, keep it inline.
 
@@ -97,13 +97,13 @@ Otherwise, keep it inline.
 
 - Use `args`/`kwargs` for collections, `arg`/`kwarg` when iterating.
 - Use `start`/`end` for range bounds (dates, indices, versions, …).
-- Suffix a variable with `_dir` if it holds a directory (e.g. `dest_dir = "/data/output"`), or `_path` if it holds a specific file (e.g. `config_path = "/data/output/config.yaml"`). Don't use bare `dir` — it shadows the builtin.
+- Suffix a variable with `_dir` if it holds a directory (e.g. `dest_dir = "/data/output"`), or `_path` if it holds a specific file (e.g. `config_path = "/data/output/config.yaml"`). Don't use bare `dir`: it shadows the builtin.
 
 ### Dates and times
 
 `datetime.datetime` is the common denominator across stdlib, pandas, polars, and API/JSON boundaries. Use it for scalars, function signatures, config, and dataclasses. Always timezone-aware, in UTC; convert to local/exchange time only at display time.
 
-Inside a DataFrame, let the library store its native vectorized type (`pd.Timestamp`/`datetime64[ns]` for pandas, `pl.Datetime` for polars) — that's unavoidable and fine for bulk/vectorized data. Don't type function signatures as `pd.Timestamp` unless the value is guaranteed to live inside a DataFrame; that couples interfaces to pandas unnecessarily and breaks when data crosses into polars or plain Python.
+Inside a DataFrame, let the library store its native vectorized type (`pd.Timestamp`/`datetime64[ns]` for pandas, `pl.Datetime` for polars): that's unavoidable and fine for bulk/vectorized data. Don't type function signatures as `pd.Timestamp` unless the value is guaranteed to live inside a DataFrame; that couples interfaces to pandas unnecessarily and breaks when data crosses into polars or plain Python.
 
 ## Notebooks
 
@@ -122,4 +122,4 @@ The notebook must then open with these two cells, in order, each separate:
 
 ## Git Commits
 
-When committing (requested by user), commit messages must use no capital letters whatsoever — the only exception is variable names or identifiers that are inherently capitalized (e.g., `MyClass`, `MY_CONSTANT`).
+When committing (requested by user), commit messages must use no capital letters whatsoever: the only exception is variable names or identifiers that are inherently capitalized (e.g., `MyClass`, `MY_CONSTANT`).
