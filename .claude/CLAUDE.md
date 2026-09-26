@@ -9,6 +9,10 @@
 
 @context/writing-style.md
 
+## File Naming
+
+@context/file-naming.md
+
 ## Python Environment
 
 Always use `uv` with the pip interface for Python operations. Run all `pip` commands as `uv pip` (e.g., `uv pip install`).
