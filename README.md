@@ -19,6 +19,18 @@ to give Claude project-specific instructions.
 - **`writing-style.md`**: shared writing-style guidance, referenced from
   `CLAUDE.md`.
 
+## .zsh/
+
+Zsh shell configuration.
+
+- **`banner.zsh`**: prints a BAYQUANT ASCII banner. To show it on every new
+  terminal, copy it to your home directory and source it from `~/.zshrc`:
+
+  ```zsh
+  cp .zsh/banner.zsh ~/banner.zsh
+  echo 'source ~/banner.zsh' >> ~/.zshrc
+  ```
+
 ## .vscode/settings.json
 
 VS Code workspace settings for Python development, pointing at a `.venv`
