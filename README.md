@@ -16,8 +16,8 @@ to give Claude project-specific instructions.
 - **`skills/`**: custom skills invocable as slash commands
   (`scope-folders`, for running an instruction scoped to a user-picked
   subset of subfolders).
-- **`writing-style.md`**: shared writing-style guidance, referenced from
-  `CLAUDE.md`.
+- **`context/`**: shared style guidance imported into `CLAUDE.md`
+  (`writing-style.md`, `math-style.md`, `file-naming.md`).
 
 ## .zsh/
 
