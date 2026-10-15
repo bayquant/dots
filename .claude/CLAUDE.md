@@ -109,7 +109,9 @@ Otherwise, keep it inline.
 
 ### Dates and times
 
-@context/dates-and-times.md
+datetime.datetime is the common denominator across stdlib, pandas, polars, and API/JSON boundaries. Use it for scalars, function signatures, config, and dataclasses. Always timezone-aware, in UTC; convert to local/exchange time only at display time.
+
+Inside a DataFrame, let the library store its native vectorized type (pd.Timestamp/datetime64[ns] for pandas, pl.Datetime for polars): that's unavoidable and fine for bulk/vectorized data. Don't type function signatures as pd.Timestamp unless the value is guaranteed to live inside a DataFrame; that couples interfaces to pandas unnecessarily and breaks when data crosses into polars or plain Python.
 
 ## Notebooks
 
