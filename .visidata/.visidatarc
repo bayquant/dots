@@ -1,0 +1,36 @@
+# VisiData configuration. Copy to ~/.visidatarc.
+
+# Show the time of day on timestamps (ts_event, ts_init), not just the date.
+options.disp_date_fmt = '%Y-%m-%d %H:%M:%S'
+
+# Thousands separators on integers (volumes, counts).
+options.disp_int_fmt = '{:,d}'
+
+# Four decimals on floats (prices, returns).
+options.disp_float_fmt = '{:.4f}'
+
+# Ask before quitting a sheet with unsaved edits.
+options.quitguard = True
+
+# Colors for a dark terminal: dim column separators, a visible cursor column and
+# cyan header text.
+options.color_column_sep = '240 on black'
+options.color_current_col = 'bold on 236'
+options.color_default_hdr = 'bold 81 on black'
+
+# Positive numbers green, negative numbers red; zero, text and dates keep the default.
+from decimal import Decimal
+
+vd.theme_option('color_positive', '78 green', 'color of positive numbers')
+vd.theme_option('color_negative', '203 red', 'color of negative numbers')
+
+
+def _sign(v):
+    value = v.typedval
+    if isinstance(value, (int, float, Decimal)) and not isinstance(value, bool):
+        return (value > 0) - (value < 0)
+    return 0
+
+
+Sheet.colorizers.append(CellColorizer(4, 'color_positive', lambda s, c, r, v: _sign(v) > 0))
+Sheet.colorizers.append(CellColorizer(4, 'color_negative', lambda s, c, r, v: _sign(v) < 0))

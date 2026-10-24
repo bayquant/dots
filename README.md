@@ -35,3 +35,17 @@ Zsh shell configuration.
 
 VS Code workspace settings for Python development, pointing at a `.venv`
 in the parent directory of the workspace.
+
+## .visidata/
+
+[VisiData](https://www.visidata.org) configuration.
+
+- **`.visidatarc`**: display settings for exploring market data: timestamps with
+  the time of day (`disp_date_fmt`), thousands separators on integers, four
+  decimals on floats, a quit confirmation for unsaved edits, a few colors for a
+  dark terminal, and green and red for positive and negative numbers. Copy it
+  to your home directory:
+
+  ```sh
+  cp .visidata/.visidatarc ~/.visidatarc
+  ```
